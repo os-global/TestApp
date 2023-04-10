@@ -1,6 +1,4 @@
-# TestMe app
-QA Mania  
-https://qamania.org/
+# TestApp
 
 ## About
 The main goal of this application - learn how to cover web apps with autotests.
@@ -28,9 +26,9 @@ long waitings and multiple ajax requests
 - Open page after specific BE delay
 - Open page and wait specific number of ajax requests handled
 - Handle HTTP 500 errors
-- <span style="color:red">NEW!</span> Rest API for API and performance testing
-- <span style="color:red">NEW!</span> iFrame in demo pages
-- <span style="color:red">NEW!</span> input with variable id and classes
+- Rest API for API and performance testing
+- iFrame in demo pages
+- input with variable id and classes
 
 ## API
 [Api doc in postman](https://documenter.getpostman.com/view/2037649/UV5TEe6x)
