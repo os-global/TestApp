@@ -51,3 +51,8 @@ def wait_ajax(request):
 @login_required
 def crash(request):
     raise Exception(f'you crashed this site,  {request.user.username}')
+
+
+@login_required
+def test_location(request):
+    return render(request, 'location.html', context={'status': 'ok'})

@@ -37,7 +37,6 @@
                     </div>
                 </div>
             </div>
-            <div class="position">000:000</div>
             <div class="account">
                 <h2>Hello, {{ user.username }}</h2>
                 <a href="{% url 'logout' %}" class="logOut"></a>
@@ -49,23 +48,6 @@
     <main>
 {% else %}
     <main class="mainLogin">
-{% endif %}
-
-{% if user.is_authenticated %}
-    <script>
-        $(document).ready(function () {
-            LightAjax.token = Cookies.get('csrftoken');
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    let latitude = Number(position.coords.latitude).toFixed(1);
-                    let longitude = Number(position.coords.longitude).toFixed(1);
-                    console.log(latitude + ':' + longitude);
-                    $('.position').text(latitude + ':' + longitude);
-                });
-            }
-
-        });
-    </script>
 {% endif %}
 
 {% block content %}

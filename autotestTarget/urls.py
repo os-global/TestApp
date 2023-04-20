@@ -27,6 +27,7 @@ urlpatterns = [
     path('lazyrun/', testnrun.lazy_load_runs, name='lazy_run'),
 
     path('demo/', demo.dashboard, name='demo_pages'),
+    path('demo/testLocation', demo.test_location, name='test_location'),
     path('demo/waitPage', demo.wait_page, name='wait_page'),
     path('demo/waitAjax', demo.wait_ajax, name='wait_ajax'),
     path('demo/crash', demo.crash, name='crash'),
