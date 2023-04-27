@@ -6,22 +6,6 @@
     <div class="wBox">
       <h3>Demo controls</h3>
       <div class="updateForm demoForm">
-        <div class="wait">
-          <div><input type="number" class="waitPageTime" value="5" min="1" max="100" minlength="1" maxlength="3"></div>
-          <div><a href="javascript:;" class="waitPage">Open page after <span>5</span> seconds</a></div>
-        </div>
-        <div class="wait">
-          <div><input type="number" class="waitAjaxRequests" value="5" min="1" max="10"></div>
-          <div><a href="javascript:;" class="waitAjax">Open page and wait <span>5</span> ajax loaded</a>
-          </div>
-        </div>
-
-        <div class="refresh"><a href="{% url 'test_location' %}"><input type="button" class="testLocation" value="Open Test Location Page"></a></div>
-
-        <div class="refresh"><input type="button" class="crash" value="Refresh (Cause crash)"></div>
-
-        <div class="refresh"><input type="button" class="newPage" value="Ctrl + click (New page)"></div>
-
         <div class="demoControls">
           <div class="demoSelect">
             <select>
@@ -70,7 +54,7 @@
               <label class="labelDemo">variable selectors</label>
                 <div class="{{ divClass }}" id="{{ divId }}">
                     {% for i in wraps %} <div> {% endfor %}
-                    <input type="text" id="{{ inpId }}" class="{{ inpClass }}" onkeyup="document.querySelector('.labelDemoResult').textContent = this.value"></div>
+                    <input type="text" id="{{ inpId }}" class="{{ inpClass }}" placeholder="entered value appears next" onkeyup="document.querySelector('.labelDemoResult').textContent = this.value"></div>
                   {% for i in wraps %} </div> {% endfor %}
           </div>
             <label class="labelDemoResult"></label>
@@ -88,54 +72,5 @@
     </div>
   </div>
 </div>
-
-<script>
-  $(document).ready(function () {
-      console.error("Hi! I'm the ERROR. Try to catch me");
-  });
-
-  $('.newPage').click(function (e){
-     if (e.ctrlKey) {
-         let tab = window.open(window.location.href, '_blank');
-         tab.focus();
-     } else {
-         alert('You have to press Ctrl button');
-     }
-  });
-
-  $('.waitPageTime').blur(function() {
-    let waitPageTime = $(this).val();
-    if (waitPageTime > 100) {
-      waitPageTime = 100
-    } else if (waitPageTime < 1) {
-      waitPageTime = 1
-    }
-    $(this).val(waitPageTime)
-    $('.waitPage span').html(waitPageTime)
-  });
-  $('.waitAjaxRequests').blur(function() {
-    let waitAjaxRequests = $(this).val();
-    if (waitAjaxRequests > 100) {
-      waitAjaxRequests = 100
-    } else if (waitAjaxRequests < 1) {
-      waitAjaxRequests = 1
-    }
-    $(this).val(waitAjaxRequests)
-    $('.waitAjax span').html(waitAjaxRequests)
-  });
-  $('.waitPage').click(function(event) {
-    time = $('.waitPageTime').val();
-    window.location.href = "{% url 'wait_page' %}?time=" + time;
-  });
-
-  $('.waitAjax').click(function(event) {
-    time = $('.waitAjaxRequests').val();
-    window.location.href = "{% url 'wait_ajax' %}?time=" + time;
-  });
-
-  $('.crash').click(function(event) {
-    window.location.href = "{% url 'crash' %}";
-  });
-</script>
 
 {% endblock %}

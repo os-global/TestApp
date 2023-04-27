@@ -23,7 +23,7 @@
                 class="icon-bar"></span></a>
         <div class="container">
             <div class="lHeader">
-                <div class="logo"><a href="{% url 'home' %}"><img src="{% static "assets/img/logo.svg" %}"/><img
+                <div class="logo"><a href="{% url 'home' %}"><img alt="logo one" src="{% static "assets/img/logo.svg" %}"/><img alt="logo two"
                         src="{% static "assets/img/logo2.svg" %}"/></a></div>
                 <div class="menuBox">
                     <div class="menuInner">
@@ -33,6 +33,7 @@
                             <li><a href="{% url 'runs' %}">Test Runs</a></li>
                             <li><a href="{% url 'new_test' %}">Create new test</a></li>
                             <li><a href="{% url 'demo_pages' %}">Demo pages</a></li>
+                            <li><a href="{% url 'demo_controls' %}">Demo controls</a></li>
                         </ul>
                     </div>
                 </div>
@@ -48,6 +49,14 @@
     <main>
 {% else %}
     <main class="mainLogin">
+{% endif %}
+
+{% if user.is_authenticated %}
+    <script>
+        $(document).ready(function () {
+            LightAjax.token = Cookies.get('csrftoken');
+        });
+    </script>
 {% endif %}
 
 {% block content %}

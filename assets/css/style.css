@@ -236,6 +236,7 @@ input[type=number]::-webkit-outer-spin-button {opacity: 1;}
 .ajaxResponses {padding:15px 0 0;}
 .ajaxResponses p {padding:0 0 5px; margin:0;}
 
+.demoPages {padding:25px 0 0;}
 .demoControls {padding:25px 0 0;}
 .demoCheckBox {padding:25px 0 5px;}
 .demoCheckBox input {margin-right:3px; position:relative; top:2px;}

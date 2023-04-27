@@ -1,13 +1,11 @@
 # TestApp
 
 ## About
-The main goal of this application - learn how to cover web apps with autotests.
-It is designed to be cross platform and does not require many dependencies.  
-_Application code is not optimal due to design restrictions but expected to be good enough for autotests_  
+Cross-platform application to learn how to cover web apps with autotests.
 
 ## Application Description
-TestMe - simple test management system. It provides features to create, update, delete, run and view list of test cases.
-Also it is possible to view list of all test runs and get stats of all test cases in the system.
+Simple test management system. It provides features to create, update, delete, run and view list of test cases.
+It is possible to view list of all test runs and get stats of all test cases in the system.
 Demo features designed additionally to give automation test engineers possibility to handle 
 long waitings and multiple ajax requests
 

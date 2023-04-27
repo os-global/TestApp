@@ -7,7 +7,7 @@ import time
 
 
 @login_required
-def dashboard(request):
+def demo_pages(request):
     context = {
         'divClass': ' a'.join(str(uuid4()).split('-')),
         'divId': str(uuid4()),
@@ -15,7 +15,19 @@ def dashboard(request):
         'inpId': str(uuid4()),
         'wraps': range(random.randint(1, 5))
     }
-    return render(request, 'demo.html', context=context)
+    return render(request, 'demoPages.html', context=context)
+
+
+@login_required
+def demo_controls(request):
+    context = {
+        'divClass': ' a'.join(str(uuid4()).split('-')),
+        'divId': str(uuid4()),
+        'inpClass': ' a'.join(str(uuid4()).split('-')),
+        'inpId': str(uuid4()),
+        'wraps': range(random.randint(1, 5))
+    }
+    return render(request, 'demoControls.html', context=context)
 
 
 @login_required

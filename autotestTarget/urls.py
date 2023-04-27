@@ -26,9 +26,10 @@ urlpatterns = [
     path('lazytest/', testnrun.lazy_load_tests, name='lazy_test'),
     path('lazyrun/', testnrun.lazy_load_runs, name='lazy_run'),
 
-    path('demo/', demo.dashboard, name='demo_pages'),
-    path('demo/testLocation', demo.test_location, name='test_location'),
-    path('demo/waitPage', demo.wait_page, name='wait_page'),
-    path('demo/waitAjax', demo.wait_ajax, name='wait_ajax'),
-    path('demo/crash', demo.crash, name='crash'),
+    path('demoPages/', demo.demo_pages, name='demo_pages'),
+    path('demoControls/', demo.demo_controls, name='demo_controls'),
+    path('demoPages/testLocation', demo.test_location, name='test_location'),
+    path('demoPages/waitPage', demo.wait_page, name='wait_page'),
+    path('demoPages/waitAjax', demo.wait_ajax, name='wait_ajax'),
+    path('demoPages/crash', demo.crash, name='crash'),
 ]
