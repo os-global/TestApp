@@ -14,7 +14,7 @@ urlpatterns = [
     path('', testnrun.dashboard, name='home'),
     path('tests/', testnrun.test_cases, name='tests'),
     path('runs/', testnrun.test_runs, name='runs'),
-    path('test/new', testnrun.new_test, name='new_test'),
+    path('test/new/', testnrun.new_test, name='new_test'),
 
     path('getstat/', testnrun.refresh_stats, name='refresh'),
     path('tests/<int:test_id>', testnrun.update_test, name='update'),

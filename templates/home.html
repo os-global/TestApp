@@ -23,9 +23,14 @@
                     $('.passed span').text(response.passed);
                     $('.failed span').text(response.failed);
                     $('.total span').text(response.total);
+                    return true;
                 }
             });
         }
+
+        $(document).ready(function () {
+        refreshStats();
+       });
     </script>
 
 {% endblock %}
