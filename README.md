@@ -21,15 +21,14 @@ long waitings and multiple ajax requests
 - Download test cases to csv file
 - Upload test cases as csv file  
 - List test runs
-- Open page after specific BE delay
+- Open page after specified delay
 - Open page and wait specific number of ajax requests handled
 - Handle HTTP 500 errors
 - Rest API for API and performance testing
 - iFrame in demo pages
-- input with variable id and classes
 
 ## API
-[Api doc in postman](https://documenter.getpostman.com/view/2037649/UV5TEe6x)
+[Api doc in postman](https://documenter.getpostman.com/view/27990079/2s93sgV9xC)
 
 ## Application has:  
 - Web UI
@@ -52,10 +51,7 @@ long waitings and multiple ajax requests
 Server will be started at http://127.0.0.1:8000  
 
 ## Default users
-- alice
-- bob
-- charlie  
-
-password: _Qamania123_
-
-
+| Name         | Password  |
+|--------------|-----------|
+| default      | QADqwerty | 
+| secondary    | QASqwerty | 
