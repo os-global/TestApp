@@ -20,7 +20,7 @@
 
         <div class="refresh"><input type="button" class="crash" value="Refresh (Cause crash)"></div>
 
-        <div class="refresh"><input type="button" class="newPage" value="Ctrl + click (New page)"></div>
+        <div class="refresh"><input type="button" class="newPage" value="Shift + click (New page)"></div>
       </div>
     </div>
   </div>
@@ -32,11 +32,11 @@
   });
 
   $('.newPage').click(function (e){
-     if (e.ctrlKey) {
+     if (e.shiftKey) {
          let tab = window.open(window.location.href, '_blank');
          tab.focus();
      } else {
-         alert('You have to press Ctrl button');
+         alert('You have to press Shift button');
      }
   });
 

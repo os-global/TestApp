@@ -2,75 +2,78 @@
 
 {% block content %}
 <div class="wrap wrapFlex">
-  <div class="container">
-    <div class="wBox">
-      <h3>Demo controls</h3>
-      <div class="updateForm demoForm">
-        <div class="demoControls">
-          <div class="demoSelect">
-            <select>
-              <option value="1">Hello</option>
-              <option value="2">World</option>
-              <option value="3">Default</option>
-            </select>
-          </div>
-          <div class="demoSelect2">
-            <input type="text" id="selectInp" value="Value 1">
-            <div class="select">
-              <div class="selectValueBox">
-                <div class="selectValue">Value 1</div>
-                <ul>
-                  <li>Value 1</li>
-                  <li>Value 2</li>
-                  <li>Value 3</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="demoDate">
-            <input type="date" value="date me">
-          </div>
-          <div class="demoDateZebra">
-            <input type="text" id="datepicker" value="mm/dd/yyyy">
-          </div>
-          <div class="demoCheckBox">
-            <label for="check1"><input type="checkbox" value="check me" id="check1"> check me</label>
-          </div>
-          <div class="demoColor">
-            <input type="color" value="color me me">
-          </div>
-          <div class="demoRadio">
-            <label for="radio1"><input type="radio" value="1" id="radio1" name="demo">hello</label>
-            <label for="radio2"><input type="radio" value="2" id="radio2" name="demo">world</label>
-          </div>
-          <div class="demoRange">
-            <input type="range" value="range me" min="0" , max="100" step="1">
-          </div>
-          <div class="demoIFrame">
-              {% load static %}
-              <iframe src="{% static 'assets/html/frame.html' %}" title="description"></iframe>
-          </div>
-            <div>
-              <label class="labelDemo">variable selectors</label>
-                <div class="{{ divClass }}" id="{{ divId }}">
-                    {% for i in wraps %} <div> {% endfor %}
-                    <input type="text" id="{{ inpId }}" class="{{ inpClass }}" placeholder="entered value appears next" onkeyup="document.querySelector('.labelDemoResult').textContent = this.value"></div>
-                  {% for i in wraps %} </div> {% endfor %}
-          </div>
-            <label class="labelDemoResult"></label>
-        <div>
-            <label class="labelDemo">multiple inputs</label>
-            <div class="multiInput">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
+    <div class="container">
+        <div class="wBox">
+            <h3>Demo controls</h3>
+            <div class="updateForm demoForm">
+                <div class="demoSelect">
+                    <select>
+                        <option value="1">Hello</option>
+                        <option value="2">World</option>
+                        <option value="3">Default</option>
+                    </select>
+                </div>
+                <div class="demoSelect2">
+                    <input type="text" id="selectInp" value="Value 1">
+                    <div class="select">
+                        <div class="selectValueBox">
+                            <div class="selectValue">Value 1</div>
+                            <ul>
+                                <li>Value 1</li>
+                                <li>Value 2</li>
+                                <li>Value 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="demoDate">
+                    <input type="date" value="date me">
+                </div>
+                <div class="demoDateZebra">
+                    <input type="text" id="datepicker" value="mm/dd/yyyy">
+                </div>
+                <div class="demoCheckBox">
+                    <label for="check1"><input type="checkbox" value="check me" id="check1">check me</label>
+                </div>
+                <div class="demoColor">
+                    <input type="color" value="color me">
+                </div>
+                <div class="demoRadio">
+                    <label for="radio1"><input type="radio" value="1" id="radio1" name="demo">hello</label>
+                    <label for="radio2"><input type="radio" value="2" id="radio2" name="demo">world</label>
+                </div>
+                <div class="demoRange">
+                    <input type="range" value="range me" min="0" , max="100" step="1">
+                </div>
+                <div class="demoIFrame">
+                    {% load static %}
+                    <iframe src="{% static 'assets/html/frame.html' %}" title="description"></iframe>
+                </div>
+                <div>
+                    <label class="labelDemo">variable selectors</label>
+                    <div class="{{ divClass }}" id="{{ divId }}">
+                        {% for i in wraps %}
+                        <div> {% endfor %}
+                            <input type="text" id="{{ inpId }}" class="{{ inpClass }}"
+                                   placeholder="entered value appears next"
+                                   onkeyup="document.querySelector('.labelDemoResult').textContent = this.value"></div>
+                        {% for i in wraps %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <label class="labelDemoResult"></label>
+                <div>
+                    <label class="labelDemo">multiple inputs</label>
+                    <div class="multiInput">
+                        <input type="text">
+                        <input type="text">
+                        <input type="text">
+                        <input type="text">
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}
