@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrap">
+    <div class="container">
+        <div class="wBox">
+            <h3>Authors</h3>
+            <h5>Statistics across top 3 authors</h5>
+            <div class="updateForm">
+                <p class="top_1_author">Top 1: <span class="name">{{ top_1_author.name }}</span> - <span class="test_case_count">{{ top_1_author.test_case_count }}</span></p>
+                <p class="top_2_author">Top 2: <span class="name">{{ top_2_author.name }}</span> - <span class="test_case_count">{{ top_2_author.test_case_count }}</span></p>
+                <p class="top_3_author">Top 3: <span class="name">{{ top_3_author.name }}</span> - <span class="test_case_count">{{ top_3_author.test_case_count }}</span></p>
+                <div class="refresh"><input type="button" onclick="refreshAuthorStats()" value="Refresh Stats"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        function refreshAuthorStats() {
+            LightAjax.get("{% url 'refresh_authors' %}", function (status, response) {
+                if (status == 200) {
+                    $('.top_1_author span.name').text(response.top_1_author.name);
+                    $('.top_1_author span.test_case_count').text(response.top_1_author.test_case_count);
+                    $('.top_2_author span.name').text(response.top_2_author.name);
+                    $('.top_2_author span.test_case_count').text(response.top_2_author.test_case_count);
+                    $('.top_3_author span.name').text(response.top_3_author.name);
+                    $('.top_3_author span.test_case_count').text(response.top_3_author.test_case_count);
+                    return true;
+                }
+            });
+        }
+
+        $(document).ready(function () {
+        refreshAuthorStats();
+       });
+
+</script>
+
+{% endblock %}

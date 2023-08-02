@@ -1,14 +1,14 @@
+import csv
+import json
+
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+
 from tcm.conf import TestStatus, PAGE_SIZE
 from tcm.forms import TestCaseForm, UpdateTestCaseForm
 from tcm.models import TestCase, TestRun
-from django.http import JsonResponse, HttpResponse
 from .decorators import allowed_methods
-import json
-import csv
-import os
-import uuid
 
 
 def get_stats():
@@ -29,10 +29,40 @@ def get_stats():
     return stats
 
 
+def get_top_users():
+    original_list = list(TestCase.objects.prefetch_related('runs').all())
+    author_test_count = {}
+    for test_case in original_list:
+        author = test_case.author.username
+        author_test_count[author] = author_test_count.get(author, 0) + 1
+    sorted_authors = sorted(author_test_count.items(), key=lambda x: x[1], reverse=True)
+    top_3_authors = sorted_authors[:3]
+    top_3_dict = dict()
+    if len(top_3_authors) > 0:
+        top_3_dict["top_1_author"] = {"name": top_3_authors[0][0], "test_case_count": top_3_authors[0][1]}
+    else:
+        top_3_dict["top_1_author"] = {"name": "", "test_case_count": ""}
+    if len(top_3_authors) > 1:
+        top_3_dict["top_2_author"] = {"name": top_3_authors[1][0], "test_case_count": top_3_authors[1][1]}
+    else:
+        top_3_dict["top_2_author"] = {"name": "", "test_case_count": ""}
+    if len(top_3_authors) > 2:
+        top_3_dict["top_3_author"] = {"name": top_3_authors[2][0], "test_case_count": top_3_authors[2][1]}
+    else:
+        top_3_dict["top_3_author"] = {"name": "", "test_case_count": ""}
+    return top_3_dict
+
+
 @login_required
 @allowed_methods('GET')
 def dashboard(request):
     return render(request, 'home.html', context=get_stats())
+
+
+@login_required
+@allowed_methods('GET')
+def rating(request):
+    return render(request, 'rating.html', context=get_top_users())
 
 
 @login_required
@@ -125,6 +155,12 @@ def delete_test(request, test_id: int):
 @allowed_methods('GET')
 def refresh_stats(request):
     return JsonResponse(get_stats(), status=200)
+
+
+@login_required
+@allowed_methods('GET')
+def refresh_top_user_stats(request):
+    return JsonResponse(get_top_users(), status=200)
 
 
 @login_required

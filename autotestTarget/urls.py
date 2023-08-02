@@ -12,11 +12,13 @@ urlpatterns = [
     path('logout/', auth.logout_view, name='logout'),
 
     path('', testnrun.dashboard, name='home'),
+    path('rating/', testnrun.rating, name='rating'),
     path('tests/', testnrun.test_cases, name='tests'),
     path('runs/', testnrun.test_runs, name='runs'),
     path('test/new/', testnrun.new_test, name='new_test'),
 
     path('getstat/', testnrun.refresh_stats, name='refresh'),
+    path('topauthors/', testnrun.refresh_top_user_stats, name='refresh_authors'),
     path('tests/<int:test_id>', testnrun.update_test, name='update'),
     path('tests/<int:test_id>/delete', testnrun.delete_test, name='delete'),
     path('tests/<int:test_id>/status', testnrun.update_test_status, name='set_status'),

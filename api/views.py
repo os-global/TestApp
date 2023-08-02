@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from tcm.views.decorators import allowed_methods
 from tcm.models import TestCase, TestRun
 from tcm.views.testnrun import get_stats
+from tcm.views.testnrun import get_top_users
 from django.core.exceptions import ValidationError
 from api.decorators import auth_required
 import json
@@ -145,6 +146,12 @@ def update_test_status(request, test_id: int):
 @allowed_methods('GET')
 def api_stats(request):
     return JsonResponse(get_stats(), status=200)
+
+
+@auth_required
+@allowed_methods('GET')
+def api_top_user_stats(request):
+    return JsonResponse(get_top_users(), status=200)
 
 
 @allowed_methods('POST')

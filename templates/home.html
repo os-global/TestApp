@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="wrap">
-        <div class="container">
-            <div class="wBox">
-
+<div class="wrap">
+    <div class="container">
+        <div class="wBox">
+            <h3>Totals</h3>
+            <h5>Statistics across all test cases</h5>
+            <div class="updateForm">
                 <p class="noRun">No Run: <span>{{ norun }}</span></p>
                 <p class="passed">Passed: <span>{{ passed }}</span></p>
                 <p class="failed">Failed: <span>{{ failed }}</span></p>
@@ -13,9 +15,10 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    <script>
+<script>
         function refreshStats() {
             LightAjax.get("{% url 'refresh' %}", function (status, response) {
                 if (status == 200) {
@@ -31,6 +34,7 @@
         $(document).ready(function () {
         refreshStats();
        });
-    </script>
+
+</script>
 
 {% endblock %}

@@ -12,5 +12,6 @@ urlpatterns = [
     path('tests/new', views.api_new_test, name='api_new_test'),
 
     path('getstat', views.api_stats, name='api_stats'),
+    path('topauthors', views.api_top_user_stats, name='api_top_user_stats'),
 
 ]
