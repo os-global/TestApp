@@ -22,11 +22,11 @@
         <table class="testTable">
           <thead class="ttHead">
             <tr class="ttRow">
-              <th>Id</th>
-              <th>Summary</th>
+              <th class="thId">Id</th>
+              <th class="thName">Summary</th>
               <th class="thDes">Description/Steps</th>
               <th class="thAuthor">Author</th>
-              <th>Status</th>
+              <th class="thStatus">Status</th>
               <th class="thLast">Last executor</th>
               <th></th>
               <th></th>
@@ -36,8 +36,8 @@
           <tbody>
             {% for test in tests %}
             <tr class="testRow_{{ test.id }}">
-              <td>{{ test.id }}</td>
-              <td>{{ test.name }}</td>
+              <td class="ttId">{{ test.id }}</td>
+              <td class="ttName">{{ test.name }}</td>
               <td class="ttDes">
                 <div class="testDescription">{{ test.description }}</div>
               </td>
