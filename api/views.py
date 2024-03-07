@@ -47,7 +47,7 @@ def api_test_cases(request):
         s = int(size)
     else:
         p, s = 0, 20
-    tc_list = TestCase.objects.all()
+    tc_list = TestCase.objects.all().order_by('-id')
     results = list()
     for tc in tc_list[p * s:(p + 1) * s]:
         if tc.runs.count() > 0:

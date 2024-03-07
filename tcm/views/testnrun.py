@@ -68,7 +68,7 @@ def rating(request):
 @login_required
 @allowed_methods('GET')
 def test_cases(request):
-    tc_list = TestCase.objects.prefetch_related('runs').all()
+    tc_list = TestCase.objects.prefetch_related('runs').all().order_by('-id')
     full_list = list()
     for tc in tc_list[:PAGE_SIZE]:
         if tc.runs.count() > 0:
