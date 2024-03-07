@@ -93,7 +93,7 @@ def test_cases(request):
 @allowed_methods('GET')
 def test_runs(request):
     payload = dict()
-    runs = TestRun.objects.all()
+    runs = TestRun.objects.all().order_by('-id')
     payload['test_runs'] = runs[:PAGE_SIZE]
     payload['count'] = len(runs)
     payload['end'] = len(runs) <= PAGE_SIZE
@@ -168,7 +168,7 @@ def refresh_top_user_stats(request):
 def lazy_load_tests(request):
     current_page = int(request.GET.get('page'))
     # todo
-    tc_list = TestCase.objects.all()
+    tc_list = TestCase.objects.all().order_by('-id')
     the_end = (current_page + 1) * PAGE_SIZE > len(tc_list)
     tests = tc_list[current_page * PAGE_SIZE: (current_page + 1) * PAGE_SIZE]
     payload = list()
@@ -194,7 +194,7 @@ def lazy_load_tests(request):
 @allowed_methods('GET')
 def lazy_load_runs(request):
     current_page = int(request.GET.get('page'))
-    run_list = TestRun.objects.all()
+    run_list = TestRun.objects.all().order_by('-id')
     the_end = (current_page + 1) * PAGE_SIZE > len(run_list)
     payload = runs_2_json(run_list[current_page * PAGE_SIZE: (current_page + 1) * PAGE_SIZE])
     return JsonResponse({'runs': payload,
