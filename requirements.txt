@@ -1,8 +1,1 @@
-asgiref
-click
-Django
-gunicorn
-h11
-packaging
-sqlparse
-uvicorn
+django
