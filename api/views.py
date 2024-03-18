@@ -3,6 +3,7 @@ from django.middleware.csrf import get_token
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, logout, authenticate
+from tcm.forms import RegisterForm
 from tcm.views.decorators import allowed_methods
 from tcm.models import TestCase, TestRun
 from tcm.views.testnrun import get_stats
@@ -10,10 +11,46 @@ from tcm.views.testnrun import get_top_users
 from django.core.exceptions import ValidationError
 from api.decorators import auth_required
 import json
+from django.contrib.auth.models import User
 
 
 def get_csrf_token(request):
     return HttpResponse(get_token(request), status=200)
+
+@csrf_exempt
+@allowed_methods('POST')
+def api_user_new(request):
+    body = json.loads(request.body)
+    username, password, email = body.get('username'), body.get('password'), body.get('email')
+    if username is None or password is None:
+        return JsonResponse({'error': 'Username and password are required.'}, status=400)
+
+    if User.objects.filter(username=username).exists():
+        return JsonResponse({'error': 'Username already exists.'}, status=400)
+
+    user = User.objects.create_user(username=username, password=password)
+    user.save()
+
+    return JsonResponse({'message': 'User registered successfully.', 'id': user.id}, status=201)
+
+
+@csrf_exempt
+@allowed_methods('GET', 'DELETE')
+def api_user(request, user_id):
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        return JsonResponse({'error': 'User with provided id does not exist.'}, status=400)
+    if request.method == 'DELETE':
+        TestCase.objects.filter(author_id=user.id).delete()
+        TestRun.objects.filter(executor_id=user.id).delete()
+        user.delete()
+        return JsonResponse({'message': 'User deleted successfully.'}, status=200)
+    elif request.method == 'GET':
+        return JsonResponse({'id': user.id, 'username': user.username}, status=200)
+    else:
+        return JsonResponse({'error': 'Method not allowed.'}, status=405)
+    
 
 
 @csrf_exempt

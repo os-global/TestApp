@@ -5,6 +5,9 @@ urlpatterns = [
     path('auth/token', views.get_csrf_token, name='api_token'),
     path('auth/login', views.api_login, name='api_login'),
     path('auth/logout', views.api_logout, name='api_logout'),
+    
+    path('user/new', views.api_user_new, name='api_user_new'),
+    path('user/<int:user_id>', views.api_user, name='api_user'),
 
     path('tests', views.api_test_cases, name='api_test_cases'),
     path('tests/<int:test_id>', views.api_test, name='api_test'),
