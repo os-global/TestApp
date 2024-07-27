@@ -31,6 +31,12 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://test-app-aqa.koyeb.app',
+    'https://127.0.0.1:8000'
+    # Add other trusted origins if needed
+]
+
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'tcm.apps.TcmConfig',
