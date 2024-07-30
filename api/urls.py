@@ -8,6 +8,7 @@ urlpatterns = [
     
     path('user/new', views.api_user_new, name='api_user_new'),
     path('user/<int:user_id>', views.api_user, name='api_user'),
+    path('user/current', views.api_user_current, name='api_user_current'),
 
     path('tests', views.api_test_cases, name='api_test_cases'),
     path('tests/<int:test_id>', views.api_test, name='api_test'),

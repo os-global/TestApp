@@ -210,3 +210,10 @@ def api_new_test(request):
         return JsonResponse({'test_id': test.id}, status=201)
     except ValidationError:
         return JsonResponse({'error': 'test with such name already exists'}, status=400)
+
+
+@csrf_exempt
+@allowed_methods('GET', 'DELETE')
+def api_user_current(request):
+    user = request.user
+    return api_user(request, user.id)
