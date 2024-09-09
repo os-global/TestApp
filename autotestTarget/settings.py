@@ -32,9 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://test-app-aqa.koyeb.app',
-    'https://127.0.0.1:8000'
-    # Add other trusted origins if needed
+    'https://equal-veronique-aqa-fc5bd4eb.koyeb.app'
 ]
 
 INSTALLED_APPS = [
